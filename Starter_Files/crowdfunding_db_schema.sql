@@ -18,23 +18,27 @@ CREATE TABLE Contacts (
     email VARCHAR(255) NOT NULL
 );
 
--- Campaigns Table
 CREATE TABLE Campaigns (
     cf_id VARCHAR(100) PRIMARY KEY,
-    contact_id VARCHAR(100) REFERENCES Contacts(contact_id),
+    contact_id VARCHAR(100),
     company_name VARCHAR(255) NOT NULL,
     description VARCHAR(100),
-    goal INT,
-    pledged INT,
+    goal NUMERIC(10, 2),
+    pledged NUMERIC(10, 2),
     outcome VARCHAR(100),
     backers_count INT,
     country VARCHAR(100),
     currency VARCHAR(100),
-    launched_date date,
-    end_date date,
-    category_id VARCHAR(10) REFERENCES Categories(category_id),
-    subcategory_id VARCHAR(10) REFERENCES Subcategories(subcategory_id)
-)
+    launched_date DATE,
+    end_date DATE,
+    category_id VARCHAR(10),
+    subcategory_id VARCHAR(10),
+    FOREIGN KEY (category_id) REFERENCES Categories(category_id),
+    FOREIGN KEY (subcategory_id) REFERENCES Subcategories(subcategory_id)
+);
 
 
-SELECT * from 
+SELECT * FROM Campaigns;
+SELECT * FROM Subcategories;
+SELECT * FROM Contacts;
+SELECT * FROM Campaigns;
